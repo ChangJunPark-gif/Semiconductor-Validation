@@ -1,5 +1,7 @@
 # 반도체 수율 프로젝트
 
+> **후속 검증 저장소:** 이 저장소는 [원본 프로젝트](https://github.com/ChangJunPark-gif/Semiconductor)를 복사하여 평가 한계를 조사한 독립 저장소입니다. 원본 1–7단계와 기존 보고서는 아래에 보존했습니다. 새로운 결과는 [한계 검증 개요](LIMITATIONS.md), [입력 중복·lot 단위 불확실성](reports/validation/lot_bootstrap.md), [정상 wafer 포함 OOD 평가](reports/validation/ood_with_normal.md)를 먼저 보세요. 아래의 GitHub Pages 링크와 기존 성능 요약은 **원본 프로젝트**의 기록입니다.
+
 웨이퍼 수율·공간 패턴 분석과 신규 패턴 탐지를 위한 프로젝트입니다.
 
 **웹사이트:** [Wafer Signal Lab — GitHub Pages](https://changjunpark-gif.github.io/Semiconductor/)

@@ -136,7 +136,12 @@ def main() -> None:
             hashes[i] = map_digest(wafer_map)
         np.savez(cache, maps=maps, hashes=hashes, source_rows=frame.source_row.to_numpy())
         del raw
-    keep, removed = cross_split_keep(hashes, frame.split.to_numpy())
+    # The CNN sees resized maps: distinct originals can become identical inputs.
+    original_keep, _ = cross_split_keep(hashes, frame.split.to_numpy())
+    input_hashes = np.array([hashlib.sha256(wafer_map.tobytes()).hexdigest() for wafer_map in maps])
+    input_keep, _ = cross_split_keep(input_hashes, frame.split.to_numpy())
+    keep = original_keep & input_keep
+    removed = {name: int(((frame.split == name) & ~keep).sum()) for name in ("validation", "test")}
     frame = frame.loc[keep].reset_index(drop=True)
     maps = maps[keep]
     hashes = hashes[keep]
